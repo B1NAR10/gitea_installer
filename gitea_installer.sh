@@ -39,8 +39,8 @@ done
 if [ -z "$FQDN" ] || [ -z "$EMAIL" ] || [ -z "$IP" ] || [ -z "$PASSWORD" ] || [ -z "$SQLROOT" ]; then
 echo "One of the options is missing:"
 echo "-f FQDN - Systemname of GITEA system"
-echo "-e EMAIL - E-Mail for letsencrypt"
-echo "-i IP - IPv4 address of this system"
+echo "-e EMAIL - Correo electrónico para Letsencrypt"
+echo "-i IP - enderezo IPv4 deste sistema"
 echo "-p PASSWORD - Used for GITEA DB"
 echo "-r SQLROOT - MySQL ROOT password"
 echo "-l LETSENCRYPT - Use letsencrypt"
