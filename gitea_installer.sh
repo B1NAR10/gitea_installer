@@ -108,8 +108,8 @@ systemctl enable --now gitea
 
 # Crear bd en mariadb
 mysql -u root -Bse "CREATE DATABASE giteadb;"
-mysql -u root -Bse "CREATE USER 'gitea'@'localhost' IDENTIFIED BY '$PASSWORD';"
-mysql -u root -Bse "GRANT ALL ON giteadb.* TO 'gitea'@'localhost' IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION;"
+mysql -u root -Bse "CREATE USER 'gitea'@'localhost' IDENTIFIED BY '$CONTRASINAL';"
+mysql -u root -Bse "GRANT ALL ON giteadb.* TO 'gitea'@'localhost' IDENTIFIED BY '$CONTRASINAL' WITH GRANT OPTION;"
 mysql -u root -Bse "ALTER DATABASE giteadb CHARACTER SET = utf8mb4 COLLATE utf8mb4_unicode_ci;"
 mysql -u root -Bse "FLUSH PRIVILEGES;"
 
@@ -314,7 +314,7 @@ service nginx restart
 #Adquerir certificado letsencrypt
 if [ $LETSENCRYPT=='true' ] ; then
 apt install -y certbot python3-certbot-nginx
-certbot --nginx -d $FQDN --non-interactive --agree-tos -m $EMAIL
+certbot --nginx -d $FQDN --non-interactive --agree-tos -m $CORREO
 fi
 
 # Instalar se ufw é esta activado
@@ -347,13 +347,13 @@ echo " GITEA $VER instalado no sistema $FQDN"
 echo "--------------------------------------------------------------------------------------"
 echo " Base de Datos MariaDB    : giteadb "
 echo " Usuario MariaDB          : gitea "
-echo " Contrasinal MariaDB      : $PASSWORD "
+echo " Contrasinal MariaDB      : $CONTRASINAL "
 echo " Character set MariaDB    : utf8mb4"
 echo "--------------------------------------------------------------------------------------"
 echo " Usuario root MariaDB     : root"
 echo " Contrasinal root MariaDB : $SQLROOT"
 echo "--------------------------------------------------------------------------------------"
-echo " System is accessable via https://$FQDN"
+echo " Sistema accesible via    : https://$FQDN"
 echo "--------------------------------------------------------------------------------------"
 echo " >>> You must finish the initial setup <<< "
 echo "--------------------------------------------------------------------------------------"
@@ -361,7 +361,7 @@ echo " Título do sitio          : Introduza o nome da súa organización."
 echo " Ruta Raíz do Repositorio : Deixe o /home/git/gitea-repositories por defecto."
 echo " Ruta Raíz de Git LFS     : Deixe o /var/lib/gitea/data/lfs por defecto."
 echo " Executar Nome de Usuario : git"
-echo " Dominio do Servidor SSH  : Us $FQDN"
+echo " Dominio do Servidor SSH  : Usa $FQDN"
 echo " Porto SSH                : 22, cámbiao se SSH escoita noutro porto."
 echo " Port Escoita HTTP Gitea  : 3000"
 echo " URL base de Gitea        : Usar https://$FQDN/ "
