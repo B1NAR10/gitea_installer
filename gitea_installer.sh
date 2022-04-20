@@ -132,10 +132,10 @@ cat >> /etc/mysql/mariadb.conf.d/50-server.cnf << XYZ
 #
 # * Configuración Básica
 #
-usuario = mysql
+user = mysql
 pid-file = /run/mysqld/mysqld.pid
 socket = /run/mysqld/mysqld.sock
-#porto = 3306
+#port = 3306
 basedir = /usr
 datadir = /var/lib/mysql
 tmpdir = /tmp
